@@ -1,0 +1,14 @@
+<div *ngIf="airQualityData">
+  <h2>Air Quality Statistics</h2>
+  <br />
+  <ngx-charts-bar-vertical
+    [results]="airQualityData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="false"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Hour"
+    yAxisLabel="Air Quality"
+  ></ngx-charts-bar-vertical>
+</div>

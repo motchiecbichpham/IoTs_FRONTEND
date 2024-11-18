@@ -1,0 +1,14 @@
+<div *ngIf="temperatureData">
+  <h2>Temperature Statistics</h2>
+  <br />
+  <ngx-charts-line-chart
+    [results]="temperatureData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="false"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    xAxisLabel="Hour"
+    yAxisLabel="Temperature (°C)"
+  ></ngx-charts-line-chart>
+</div>

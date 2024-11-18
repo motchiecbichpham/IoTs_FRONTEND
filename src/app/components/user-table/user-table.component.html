@@ -1,0 +1,18 @@
+<h2>Energy consumption</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Energy Usage</th>
+      <th>Last Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.energyUsage }} kWh</td>
+      <td>{{ user.lastUpdated| date:'short' }}</td>
+    </tr>
+  </tbody>
+</table>
