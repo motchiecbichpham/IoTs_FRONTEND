@@ -1,0 +1,14 @@
+.status-card {
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-left: 4px solid #dc3545;
+}
+.status-card.active {
+  border-left-color: #28a745;
+}
+.status-indicator {
+  margin-top: 10px;
+  font-weight: bold;
+}

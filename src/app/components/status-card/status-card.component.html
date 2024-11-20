@@ -1,0 +1,7 @@
+<div class="status-card" [class.active]="status.isActive">
+  <h4>{{status.label}}</h4>
+  <p>{{status.description}}</p>
+  <div class="status-indicator">
+    {{status.isActive ? 'Active' : 'Inactive'}}
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<header>
+  <h1> Welcome to SmartBerry </h1>
+</header>
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        class="form-control"
+        placeholder="Enter username"
+      >
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Enter password"
+      >
+      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="nav-tabs">
+    <button
+      class="nav-tab"
+      [class.active]="activeTab === 'home'"
+      (click)="switchTab('home')"
+    >
+      Home
+    </button>
+    <button
+      class="nav-tab"
+      [class.active]="activeTab === 'dashboard'"
+      (click)="switchTab('dashboard')"
+    >
+      Dashboard
+    </button>
+  </div>
+</nav>

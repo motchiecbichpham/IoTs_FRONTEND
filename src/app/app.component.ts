@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './components/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  imports: [DashboardComponent],
+  styleUrls: ['./app.component.css'], // Note: Fixed typo from 'styleUrl' to 'styleUrls'
+  imports: [RouterModule, NavbarComponent],
   standalone: true,
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'SmartBerry';
 }
