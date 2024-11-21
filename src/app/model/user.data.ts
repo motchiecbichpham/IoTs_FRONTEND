@@ -9,4 +9,5 @@ export interface House {
   houseName: string;
   isOccupied: boolean;
   lastUsed: Date;
+  isAirFilterOn: boolean;
 }

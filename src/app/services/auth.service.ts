@@ -21,6 +21,7 @@ export class AuthService {
         const token = response.token;
         if (token) {
           localStorage.setItem('authToken', token);
+          localStorage.setItem('user', JSON.stringify(response.house));
           this.isAuthenticated = true;
           this.router.navigate(['/home']);
           this.user = response.house;
@@ -33,11 +34,13 @@ export class AuthService {
     );
   }
   getUser(): House {
-    return this.user;
+    return this.user ?? JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   logout() {
     this.isAuthenticated = false;
+    localStorage.clear();
+    sessionStorage.clear();
   }
 
   isLoggedIn(): boolean {

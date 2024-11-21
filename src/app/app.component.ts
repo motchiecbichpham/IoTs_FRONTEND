@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
+import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'], // Note: Fixed typo from 'styleUrl' to 'styleUrls'
-  imports: [RouterModule],
+  imports: [RouterModule, NavBarComponent],
   standalone: true,
 })
 export class AppComponent {

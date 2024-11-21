@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LightData, Status } from '../../model/air-quality.data';
-import { House, User } from '../../model/user.data';
+import { House } from '../../model/user.data';
 import { AuthService } from '../../services/auth.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { StatusCardComponent } from '../status-card/status-card.component';
@@ -16,19 +16,8 @@ import { StatusCardComponent } from '../status-card/status-card.component';
 export class HomeComponent implements OnInit {
   constructor(private authService: AuthService) {}
   user!: House;
-
-  airFilterStatus: Status = {
-    isActive: true,
-    label: 'Air Filter',
-    description: 'Air filter is working properly',
-  };
-
-  ledsStatus: Status = {
-    isActive: true,
-    label: 'LED Lights',
-    description: 'All LED lights are operational',
-  };
-
+  airFilterStatus!: Status;
+  ledsStatus!: Status;
   energyData: LightData[] = [
     {
       timestamp: new Date(),
@@ -38,8 +27,18 @@ export class HomeComponent implements OnInit {
   ];
 
   ngOnInit() {
-    // Fetch real data here
     this.user = this.authService.getUser();
+    this.airFilterStatus = {
+      isActive: this.user.isAirFilterOn,
+      label: 'Air Filter',
+      description: 'Air filter is working properly',
+    };
+    this.ledsStatus = {
+      isActive: this.user.isOccupied,
+      label: 'LED Lights',
+      description: 'All LED lights are operational',
+    };
+
     console.log(this.user);
   }
 }
