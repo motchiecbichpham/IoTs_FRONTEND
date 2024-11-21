@@ -1,25 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { EnvironmentalData } from '../model/air-quality.data';
 import { TemperatureData } from '../model/temperature.data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TemperatureService {
+  constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:8089/api/environmental-data/daily';
   getTemperatureByHour(): Observable<TemperatureData[]> {
-    return of([
-      { hour: 0, temperature: 4 },
-      { hour: 2, temperature: 5 },
-      { hour: 4, temperature: 7 },
-      { hour: 6, temperature: 7 },
-      { hour: 8, temperature: 7 },
-      { hour: 10, temperature: 10 },
-      { hour: 12, temperature: 11 },
-      { hour: 14, temperature: 16 },
-      { hour: 16, temperature: 15 },
-      { hour: 18, temperature: 13 },
-      { hour: 20, temperature: 12 },
-      { hour: 22, temperature: 8 },
-    ]);
+    return this.http.get<EnvironmentalData[]>(this.apiUrl).pipe(
+      map((data: EnvironmentalData[]) =>
+        data.map((item) => ({
+          hour: item.hour,
+          temperature: item.temperature,
+        }))
+      )
+    );
   }
 }

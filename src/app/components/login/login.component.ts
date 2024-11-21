@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -26,8 +31,10 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // Add authentication logic here
-      this.router.navigate(['/home']);
+      this.authService.login(
+        this.loginForm.value.username,
+        this.loginForm.value.password
+      );
     }
   }
 }

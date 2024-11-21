@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LightData, Status } from '../../model/air-quality.data';
-import { User } from '../../model/user.data';
-import { StatusCardComponent } from "../status-card/status-card.component";
-import { ProfileComponent } from "../profile/profile.component";
+import { House, User } from '../../model/user.data';
+import { AuthService } from '../../services/auth.service';
+import { ProfileComponent } from '../profile/profile.component';
+import { StatusCardComponent } from '../status-card/status-card.component';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +14,8 @@ import { ProfileComponent } from "../profile/profile.component";
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  user: User = {
-    id: 1,
-    name: 'John Doe',
-    energyUsage: 150,
-    lastUpdated: new Date(),
-  };
+  constructor(private authService: AuthService) {}
+  user!: House;
 
   airFilterStatus: Status = {
     isActive: true,
@@ -38,10 +35,11 @@ export class HomeComponent implements OnInit {
       energyProduce: 45.6,
       energySave: 12.3,
     },
-    // Add more data as needed
   ];
 
   ngOnInit() {
     // Fetch real data here
+    this.user = this.authService.getUser();
+    console.log(this.user);
   }
 }

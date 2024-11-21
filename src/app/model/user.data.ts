@@ -4,3 +4,9 @@ export interface User {
   energyUsage: number;
   lastUpdated: Date;
 }
+
+export interface House {
+  houseName: string;
+  isOccupied: boolean;
+  lastUsed: Date;
+}
