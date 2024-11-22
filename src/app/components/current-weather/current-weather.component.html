@@ -1,0 +1,26 @@
+<div class="weather-card" *ngIf="weatherData; else errorDisplay">
+    <h2>Current Weather</h2>
+    <div class="temperature">
+        <h3>Temperature: {{ weatherData.current.temperature_2m }}°C</h3>
+    </div>
+    <div class="details">
+        <p><span class="sub_heading">Rain:</span> {{ weatherData.current.rain }} mm</p>
+        <p><span class="sub_heading">Cloud Cover:</span> {{ weatherData.current.cloud_cover }}%</p>
+    </div>
+
+    <div class="forecast">
+        <h3>Upcoming forcast</h3>
+        <div class="forecast-grid">
+            <div class="forecast-item" *ngFor="let forecast of nextThreeHours">
+                <p class="time">{{ forecast.time }}</p>
+                <p class="temp">{{ forecast.temperature_2m }}°C</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #errorDisplay>
+    <div class="error" *ngIf="error">
+        <p>{{ error }}</p>
+    </div>
+</ng-template>
